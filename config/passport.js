@@ -1,8 +1,11 @@
+const mongoose = require('mongoose');
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
+var User = require("../models/user")
 
 // Let Passport know we want to use a Local Strategy: login with email and password.
 // What other kinds of strategies could you try in class today?
+
 passport.use(new LocalStrategy({
     usernameField: "email"
   },
@@ -10,10 +13,12 @@ passport.use(new LocalStrategy({
     // This runs when a user tries to sign in.
 
     // TODO: Replace this object with a mongoose User model.
-    let user = {
-      email,
-      password
-    };
+    // let user = {
+    //   email,
+    //   password
+    // };
+    let user = mongoose.model("user")
+    
     if (!user && !user.validPassword(password)) {
       return done(null, false, {
         message: "Incorrect email and/or password"

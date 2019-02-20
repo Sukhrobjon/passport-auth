@@ -29,7 +29,7 @@ module.exports = function (app) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({
-        "message": "not logged in"
+        "message": "Not logged in"
       });
     } else {
       // Otherwise send back the user's email and id
